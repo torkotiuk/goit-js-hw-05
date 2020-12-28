@@ -41,10 +41,12 @@ class Car {
     } 
   }
 
-  drive(hours) {
-    if (this.isOn) {
+  drive(hours) { 
+    if (this.isOn && this.distance !== undefined) {
+      this.distance = hours * this.speed + this.distance;
+    } else {
       this.distance = hours * this.speed;
-    }
+      }
   }
 }
 
