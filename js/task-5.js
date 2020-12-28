@@ -25,21 +25,23 @@ class Car {
 
   turnOff() {
     this.isOn = false;
+    this.speed = 0;
   }
 
   accelerate(value) {
-    this.speed = value;
+    if (this.maxSpeed < 201) {
+      this.speed = value;
+    }
   }
 
   decelerate(value) {
-    if (this.speed > 0) {
+    let resultSpeed = this.speed - value;
+    if ( resultSpeed >= 0) {
       this.speed -= value;
     } 
   }
 
   drive(hours) {
-    let distance = 0;
-    this.distance = distance;
     if (this.isOn) {
       this.distance = hours * this.speed;
     }
@@ -56,7 +58,6 @@ Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
 
 mustang.decelerate(20);
-// mustang.drive(4.3333333333333334);
 mustang.drive(1);
 mustang.turnOff();
 
